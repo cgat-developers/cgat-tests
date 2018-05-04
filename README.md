@@ -1,2 +1,3 @@
 # cgat-tests
-Configuration files for tests
+
+Configuration files for CI

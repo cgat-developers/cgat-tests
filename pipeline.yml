@@ -10,7 +10,7 @@ copyright: CGAT
 version: 1.0  
 release: ""  
 
-data_url: http://www.cgat.org/downloads/public/cgat/pipeline_test_data_test
+data_url: http://www.cgat.org/downloads/public/cgat/pipeline_ci_data
 
 ## Directory with test data and configurations
 data_dir: /ifs/devel/pipelines/data

@@ -171,7 +171,9 @@ test_rnaseqqc:
     regex_linecount: [experiment.tsv,reference.gtf.gz,refcoding.gtf.gz,hisat.contextstats.tsv.gz,hisat.altcontextstats.tsv.gz,coding_exons.gtf.gz]
 
 test_scrnaseqqc:
-    regex_md5: [bam.stats,ercc.tsv.summary,fa,tsv,clean]
+    regex_md5: [bam.stats,fa,tsv,clean]
+
+    regex_linecount: [ercc.tsv.summary]
 
     # confirm with JS before adding these tests
     #[test_splicing]

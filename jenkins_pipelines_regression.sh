@@ -32,33 +32,26 @@ export SGE_ARCH=lx24_x86
 export SGE_CELL=default
 
 export MODULEPATH=/usr/share/Modules/modulefiles:/etc/modulefiles:/ifs/apps/modulefiles
-DIR_PUBLISH=/ifs/public/cgatpipelines/jenkins_report/
-URL_SUB="s/\/ifs\/mirror\/jenkins\/PipelineRegressionTests\/report\/html/http:\/\/www.cgat.org\/downloads\/public\/cgatpipelines\/jenkins_report/"
 
-# enter working directory. Needs to be on /ifs and mounted everywhere
-# /ifs/projects not possible as jenkins not part of projects group.
-# configured custom workspace folder as advanced setting via Jenkins web GUI
-cd ${WORKSPACE}
+echo "Installing pipelines"
+ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
+   "cd ${WORKSPACE} && \
+    export TERM=xterm && \
+    bash install-CGAT-tools.sh \
+    --devel \
+    --location ${WORKSPACE}/cgat-developers"
 
-# use automated installation
-bash CGATPipelines/install-CGAT-tools.sh --jenkins --env-name jenkins-env
-
-# Parameterised testing
-if [[ $JENKINS_CLEAR_TESTS ]]; then
-   for x in $JENKINS_CLEAR_TESTS; do
-      echo "removing old test data for test: $x"
-      rm -rf test_$x.dir test_$x.tgz test_$x.log
-   done
-   JENKINS_ONLY_UPDATE="true"
-fi
-
-# clear up previous tests
-if [[ "$JENKINS_ONLY_UPDATE" == "false" ]]; then
-    rm -rf prereq_* ctmp* test_* _cache _static _templates _tmp report *.log csvdb *.load *.tsv
-fi
+echo "Run pytests"
+ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
+   "cd ${WORKSPACE} && \
+    export TERM=xterm && \
+    bash install-CGAT-tools.sh \
+    --test \
+    --location ${WORKSPACE}/cgat-developers"
 
 # copy test configuration files
-cd ${WORKSPACE} && ln -fs config/{pipeline.ini,conf.py} .
+curl -O https://raw.githubusercontent.com/cgat-developers/cgat-tests/master/pipeline.yml
+curl -O https://raw.githubusercontent.com/cgat-developers/cgat-tests/master/conf.py
 
 error_report() {
     echo "Error detected"
@@ -74,18 +67,11 @@ trap 'error_report' ERR
 # run pipelines
 
 echo "Starting pipelines"
-ssh ${SUBMIT_HOST} \
+ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
    "cd ${WORKSPACE} && \
-    source ${WORKSPACE}/conda-install/bin/activate jenkins-env && \
+    export TERM=xterm && \
+    source ${WORKSPACE}/cgat-developers/conda-install/etc/profile.d/conda.sh && \
+    conda activate base && conda activate cgat-f && \
     module load bio/gatk-full bio/homer  && \
     cgatflow testing make full -v 5"
-
-
-echo "Building report"
-source ${WORKSPACE}/conda-install/bin/activate jenkins-env
-cgatflow testing make build_report -v 5
-
-echo "Publishing report"
-cp -arf report/html/* ${DIR_PUBLISH}
-find ${DIR_PUBLISH} -name "*.html" -exec perl -p -i -e ${URL_SUB} {} \;
 

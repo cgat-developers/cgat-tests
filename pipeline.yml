@@ -173,7 +173,7 @@ test_rnaseqqc:
 test_scrnaseqqc:
     regex_md5: [bam.stats,fa,tsv,clean]
 
-    regex_linecount: [ercc.tsv.summary]
+    regex_linecount: [ercc.tsv.summary,sailfish_counts.tsv]
 
     # confirm with JS before adding these tests
     #[test_splicing]

@@ -51,7 +51,6 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
 
 # copy test configuration files
 curl -O https://raw.githubusercontent.com/cgat-developers/cgat-tests/master/pipeline.yml
-curl -O https://raw.githubusercontent.com/cgat-developers/cgat-tests/master/conf.py
 
 error_report() {
     echo "Error detected"

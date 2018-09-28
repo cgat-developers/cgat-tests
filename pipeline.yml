@@ -176,18 +176,10 @@ test_scrnaseqqc:
 
     regex_linecount: [ercc.tsv.summary,sailfish_counts.tsv]
 
-    # confirm with JS before adding these tests
-    #[test_splicing]
-
 test_windows:
     regex_md5: [bed.gz,tsv,stats]
 
-    regex_linecount: [.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz]
-
-    # [test_timeseries]
-    # regex_md5=tsv.gz,tsv
-    #
-    # regex_linecount=distance.tsv,.*-expression.tsv,.*-eigengene_loadings.tsv,.*-diff-cond.tsv,.*-time.tsv
+    regex_linecount: [.*.counts.bed.gz,.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz]
 
     ###############################################################
 report:

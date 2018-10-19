@@ -179,7 +179,7 @@ test_scrnaseqqc:
 test_windows:
     regex_md5: [bed.gz,tsv,stats]
 
-    regex_linecount: [.*.counts.bed.gz,.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz,design*.merged*.bed.gz]
+    regex_linecount: [.*.counts.bed.gz,.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz,design.*.merged.*.bed.gz]
 
     ###############################################################
 report:

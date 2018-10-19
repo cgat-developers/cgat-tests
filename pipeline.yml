@@ -159,7 +159,7 @@ test_readqc:
 
 test_rnaseqdiffexpression:
     regex_md5: [tsv,gz]
-    regex_linecount: [gtf2table_.*_results.tsv,featurecounts_.*_results.tsv]
+    regex_linecount: [gtf2table_.*_results.tsv,featurecounts_.*_results.tsv,gtf2table_.*_summary.tsv,featurecounts_.*_summary.tsv]
 
 test_rnaseqqc:
     regex_md5: [tsv,tsv.gz,bed.gz]

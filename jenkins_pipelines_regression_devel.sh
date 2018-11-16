@@ -37,15 +37,15 @@ echo "Installing pipelines"
 ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
    "cd ${WORKSPACE} && \
     export TERM=xterm && \
-    bash install-CGAT-tools.sh \
+    bash install-devel.sh \
     --devel \
     --location ${WORKSPACE}/cgat-developers"
 
-echo "Run pytests"
+echo "Run python tests"
 ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
    "cd ${WORKSPACE} && \
     export TERM=xterm && \
-    bash install-CGAT-tools.sh \
+    bash install-devel.sh \
     --test \
     --location ${WORKSPACE}/cgat-developers"
 

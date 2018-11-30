@@ -38,7 +38,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
    "cd ${WORKSPACE} && \
     export TERM=xterm && \
     bash install.sh \
-    --location ${WORKSPACE}/cgat-developers"
+    --install-dir ${WORKSPACE}/cgat-developers"
 
 echo "Run python tests"
 ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOST} \
@@ -46,7 +46,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
     export TERM=xterm && \
     bash install.sh \
     --test \
-    --location ${WORKSPACE}/cgat-developers"
+    --install-dir ${WORKSPACE}/cgat-developers"
 
 # copy test configuration files
 curl -O https://raw.githubusercontent.com/cgat-developers/cgat-tests/master/pipeline.yml

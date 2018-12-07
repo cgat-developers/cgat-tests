@@ -38,6 +38,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
    "cd ${WORKSPACE} && \
     export TERM=xterm && \
     bash install-devel.sh \
+    --install \
     --location ${WORKSPACE}/cgat-developers"
 
 echo "Run python tests"

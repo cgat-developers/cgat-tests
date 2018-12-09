@@ -48,6 +48,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
     export TERM=xterm && \
     bash install-devel.sh \
     --test \
+    --use-repo ${WORKSPACE} \
     --location ${WORKSPACE}/cgat-developers"
 
 # copy test configuration files

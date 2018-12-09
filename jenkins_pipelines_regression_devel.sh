@@ -72,7 +72,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
    "cd ${WORKSPACE} && \
     export TERM=xterm && \
     source ${WORKSPACE}/cgat-developers/conda-install/etc/profile.d/conda.sh && \
-    conda activate base && conda activate cgat-f && \
+    conda activate base && conda activate cgat-flow && \
     module load bio/gatk-full bio/homer  && \
     cgatflow testing make full -v 5"
 

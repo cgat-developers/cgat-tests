@@ -81,14 +81,15 @@ test_enrichment:
 
     regex_exist: [results.tsv,details.tsv]
 
-test_exome:
-    target: variantAnnotator
-
-    regex_md5: [idx,bam,list,vcf]
-
-    regex_linecount: chr.*picard_stats
-
-    regex_exist: chr.*bai
+# requires GATK to be activated - have to take out of CI
+#test_exome:
+#    target: variantAnnotator
+#
+#    regex_md5: [idx,bam,list,vcf]
+#
+#    regex_linecount: chr.*picard_stats
+#
+#    regex_exist: chr.*bai
 
     # confirm with KB before adding these tests
     #[test_geneinfo]
@@ -157,29 +158,29 @@ test_readqc:
     # _screen.txt$: sort order differs
     regex_linecount: [fastqc_data.txt,_screen.txt]
 
-test_rnaseqdiffexpression:
-    regex_md5: [tsv,gz]
-    regex_linecount: [gtf2table_.*_results.tsv,featurecounts_.*_results.tsv,gtf2table_.*_summary.tsv,featurecounts_.*_summary.tsv]
+#test_rnaseqdiffexpression:
+#    regex_md5: [tsv,gz]
+#    regex_linecount: [gtf2table_.*_results.tsv,featurecounts_.*_results.tsv,gtf2table_.*_summary.tsv,featurecounts_.*_summary.tsv]
 
-test_rnaseqqc:
-    regex_md5: [tsv,tsv.gz,bed.gz]
-    # The experiment contains the project name, which is different depending
-    # on location.
-    # In the genesets, the p_id is not set consistently, seems to be a random
-    # ordering issue.
-    # The context stats fluctuate, might an assignment issue where one interval
-    # is assigned randomly to equally well matching intervals.
-    regex_linecount: [experiment.tsv,reference.gtf.gz,refcoding.gtf.gz,hisat.contextstats.tsv.gz,hisat.altcontextstats.tsv.gz,coding_exons.gtf.gz]
+#test_rnaseqqc:
+#    regex_md5: [tsv,tsv.gz,bed.gz]
+#    # The experiment contains the project name, which is different depending
+#    # on location.
+#    # In the genesets, the p_id is not set consistently, seems to be a random
+#    # ordering issue.
+#    # The context stats fluctuate, might an assignment issue where one interval
+#    # is assigned randomly to equally well matching intervals.
+#    regex_linecount: [experiment.tsv,reference.gtf.gz,refcoding.gtf.gz,hisat.contextstats.tsv.gz,hisat.altcontextstats.tsv.gz,coding_exons.gtf.gz]
 
-test_scrnaseqqc:
-    regex_md5: [bam.stats,ercc.tsv.summary,fa,tsv,clean]
+#test_scrnaseqqc:
+#    regex_md5: [bam.stats,ercc.tsv.summary,fa,tsv,clean]
+#
+#    regex_linecount: [ercc.tsv.summary,sailfish_counts.tsv]
 
-    regex_linecount: [ercc.tsv.summary,sailfish_counts.tsv]
-
-test_windows:
-    regex_md5: [bed.gz,tsv,stats]
-
-    regex_linecount: [.*.counts.bed.gz,.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz,design.*.merged.*.bed.gz]
+#test_windows:
+#    regex_md5: [bed.gz,tsv,stats]
+#
+#    regex_linecount: [.*.counts.bed.gz,.*_counts_l2foldchange_.*.tsv.gz,design.*.tsv.gz,genomic.covered.tsv.gz,design.*.merged.*.bed.gz]
 
     ###############################################################
 report:

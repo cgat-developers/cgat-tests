@@ -39,7 +39,7 @@ ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ${SUBMIT_HOS
     export TERM=xterm && \
     bash install-devel.sh \
     --install \
-    --with-pipelines \
+    --install-pipelines-dependencies \
     --use-repo ${WORKSPACE} \
     --location ${WORKSPACE}/cgat-developers"
 

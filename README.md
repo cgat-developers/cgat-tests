@@ -13,10 +13,10 @@ The tests are implemented in the script pipeline_testing.py, which is itself a r
     cd cgat-tests
 
     # run pipeline_testing
-    python <path to code>/CGATPipelines/pipeline_testing.py -v 5 -p 10 make full
+    python <path to code>/CGATPipelines/pipeline_testing.py make full -v 5 -p 10 
 
     # build report
-    python <path to code>/CGATPipelines/pipeline_testing.py -v 5 -p 10 make build_report
+    python <path to code>/CGATPipelines/pipeline_testing.py make build_report -v 5 -p 10 
     
 This will run the default CGAT pipeline test suite and build a report. pipeline_testing.py performs the following actions:
 

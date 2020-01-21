@@ -20,7 +20,7 @@ The tests are implemented in the script pipeline_testing.py, which is itself a r
     
 This will run the default CGAT pipeline test suite and build a report. pipeline_testing.py performs the following actions:
 
-Download the test data and reference data from a tar-ball on http://www.cgat.org/downloads/public/cgatpipelines/pipeline_test_data.
-Unpack the data
-Run the tests
-Check the output of the tests against the reference data
+* Download the test data and reference data from a tar-ball on http://www.cgat.org/downloads/public/cgatpipelines/pipeline_test_data.
+* Unpack the data
+* Run the tests
+* Check the output of the tests against the reference data
